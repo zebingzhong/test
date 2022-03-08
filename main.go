@@ -29,6 +29,7 @@ func main() {
 		//buf := make([]byte, 1024)
 		//n, _ := c.Request.Body.Read(buf)
 		//s := string(buf[0:n])
+		fmt.Println(11)
 		json := R{}
 		err := c.BindJSON(&json)
 		if err != nil {
