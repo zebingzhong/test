@@ -8,7 +8,7 @@ import (
 func main() {
 	r := gin.Default()
 
-	r.GET("/callback", func(c *gin.Context) {
+	r.POST("/callback", func(c *gin.Context) {
 		json := make(map[string]interface{}) //注意该结构接受的内容
 		err := c.BindJSON(&json)
 		if err != nil {
