@@ -29,6 +29,7 @@ func main() {
 		//buf := make([]byte, 1024)
 		//n, _ := c.Request.Body.Read(buf)
 		//s := string(buf[0:n])
+		fmt.Println("1")
 		json := R{}
 		err := c.BindJSON(&json)
 		if err != nil {
@@ -56,7 +57,7 @@ func main() {
 			"challenge": rJson.Challenge,
 		})
 	})
-	r.Run("0.0.0.0:80") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r.Run("0.0.0.0:8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 
 func Decrypt(encrypt string, key string) (string, error) {
