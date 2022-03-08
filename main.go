@@ -9,12 +9,11 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/callback", func(c *gin.Context) {
-		json := make(map[string]interface{}) //注意该结构接受的内容
-		err := c.BindJSON(&json)
-		if err != nil {
-			return 
-		}
-		fmt.Println(json)
+		buf := make([]byte, 1024)
+
+		n, _ := c.Request.Body.Read(buf)
+
+		fmt.Println(string(buf[0:n]))
 		c.JSON(200, gin.H{
 			"message": "pong",
 		})
