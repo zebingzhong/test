@@ -1,10 +1,20 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	r := gin.Default()
+
 	r.GET("/callback", func(c *gin.Context) {
+		json := make(map[string]interface{}) //注意该结构接受的内容
+		err := c.BindJSON(&json)
+		if err != nil {
+			return 
+		}
+		fmt.Println(json)
 		c.JSON(200, gin.H{
 			"message": "pong",
 		})
