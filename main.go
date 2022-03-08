@@ -29,7 +29,6 @@ func main() {
 		//buf := make([]byte, 1024)
 		//n, _ := c.Request.Body.Read(buf)
 		//s := string(buf[0:n])
-		fmt.Println("1")
 		json := R{}
 		err := c.BindJSON(&json)
 		if err != nil {
@@ -43,15 +42,11 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-
-
 		rJson := S{}
 		if err = json2.Unmarshal([]byte(s), &rJson); err != nil {
 			fmt.Println(rJson)
 		}
 		fmt.Println(rJson)
-
-		fmt.Println(rJson.Challenge) //hello world
 		// 解析
 		c.JSON(200, gin.H{
 			"challenge": rJson.Challenge,
